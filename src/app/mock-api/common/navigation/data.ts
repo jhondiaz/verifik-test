@@ -11,14 +11,14 @@ export const defaultNavigation: FuseNavigationItem[] = [
     },
     {
         id   : 'tester',
-        title: 'Consulta Rapida',
+        title: 'Tablero 01',
         type : 'basic',
-        icon : 'heroicons_outline:search',
+        icon : 'heroicons_outline:chart-bar',
         link : '/quick-search'
     },
     {
         id   : 'statusapi',
-        title: 'Status Api',
+        title: 'Tablero 02',
         type : 'basic',
         icon : 'heroicons_outline:status-online',
         link : '/statusapi'
@@ -27,22 +27,22 @@ export const defaultNavigation: FuseNavigationItem[] = [
 export const compactNavigation: FuseNavigationItem[] = [
     {
         id   : 'inicio',
-        title: 'Inicio',
+        title: 'Medio ambiente',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
         link : '/dashboard'
     },{
         id   : 'tester',
-        title: 'Consulta Rapida',
+        title: 'Agricultura',
         type : 'basic',
-        icon : 'heroicons_outline:search',
-        link : '/quick-search'
+        icon : 'heroicons_outline:chart-bar',
+        link :  '/quick-search'
     },
     {
         id   : 'statusapi',
-        title: 'Status Api',
+        title: 'Servicios Publicos',
         type : 'basic',
-        icon : 'heroicons_outline:status-online',
+        icon : 'heroicons_outline:table',
         link : '/statusapi'
     },
 ];

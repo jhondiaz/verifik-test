@@ -13,6 +13,8 @@ export class AuthService
 
     private baseUrl = environment.baseUrl;
 
+    private newtoken='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+
     /**
      * Constructor
      */
@@ -70,17 +72,20 @@ export class AuthService
      *
      * @param credentials
      */
-    signIn(credentials: { email: string; password: string }): Observable<any>
+    signIn(credentials: { phone: string; password: string }): Observable<any>
     {
         // Throw error, if the user is already logged in
         if ( this._authenticated )
         {
             return throwError('User is already logged in.');
         }
-
+         console.log(credentials);
+        //this.baseUrl + 'v2/auth/login'
+        //'http://54.157.121.159:3000/v1/auth/tokens'
         return this._httpClient.post(this.baseUrl + 'v2/auth/login', credentials).pipe(
             switchMap((response: any) => {
-                localStorage.setItem('accessToken', response.accessToken);
+                console.log(response);
+                localStorage.setItem('accessToken', response.accessToken);//response.accessToken
 
                 // Set the authenticated flag to true
                 this._authenticated = true;
@@ -92,6 +97,37 @@ export class AuthService
                 return of(response);
             })
         );
+
+        
+    }
+
+    signInAnd(credentials: { email: string; password: string }): Observable<any>
+    {
+        // Throw error, if the user is already logged in
+        if ( this._authenticated )
+        {
+            return throwError('User is already logged in.');
+        }
+       
+        //this.baseUrl + 'v2/auth/login'
+        //'http://54.157.121.159:3000/v1/auth/tokens'
+        return this._httpClient.post('http://54.157.121.159:3000/v1/auth/tokens', credentials).pipe(
+            switchMap((response: any) => {
+                console.log(response);
+             //   localStorage.setItem('accessToken', this.newtoken);//response.accessToken
+
+                // Set the authenticated flag to true
+              //  this._authenticated = true;
+
+                // Store the user on the user service
+               // this._userService.user = response.user;
+
+                // Return a new observable with the response
+                return of(response);
+            })
+        );
+
+        
     }
 
     /**
@@ -129,6 +165,8 @@ export class AuthService
                 return of(Boolean(accessToken.length > 10));
             })
         );
+
+
     }
 
     /**
@@ -203,7 +241,8 @@ export class AuthService
 
     /**
      * Check the authentication status
-     */
+    */
+
     check(): Observable<boolean>
     {
         // Check if the user is logged in
@@ -214,6 +253,6 @@ export class AuthService
         }
 
         // If the access token exists and it didn't expire, sign in using it
-        return this.signInUsingToken();
-    }
+        return  this.signInUsingToken();
+    } 
 }

@@ -92,7 +92,7 @@ export const appRoutes: Route[] = [
         path: '',
         component: LayoutComponent,
         data: {
-            layout: 'empty'
+            layout: 'Compact'
         },
         children: [{
             path: 'home',
@@ -121,6 +121,9 @@ export const appRoutes: Route[] = [
         component: LayoutComponent,
         resolve: {
             initialData: InitialDataResolver,
+        },
+        data: {
+            layout: 'compact'
         },
         children: [{
             path: 'dashboard',

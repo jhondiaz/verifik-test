@@ -2,18 +2,14 @@
     <div
         class="md:flex md:items-center md:justify-end w-full sm:w-auto md:h-full md:w-1/2 py-8 px-4 sm:p-12 md:p-16 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none sm:bg-card">
         <div class="w-full max-w-80 sm:w-80 mx-auto sm:mx-0">
-            <!-- Logo -->
-            <div class="w-12">
-                <img src="https://cdn.gomat.co/verifik/logo.jpeg">
-            </div>
 
             <!-- Title -->
             <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">Iniciar sesión</div>
-            <div class="flex items-baseline mt-0.5 font-medium">
+            <!--   <div class="flex items-baseline mt-0.5 font-medium">
                 <div>No tienes una cuenta?</div>
                 <a class="ml-1 text-primary-500 hover:underline" [routerLink]="['/sign-up']">Regístrate aquí
                 </a>
-            </div>
+            </div> -->
 
             <!-- Alert -->
             <fuse-alert class="mt-8 -mb-4" *ngIf="showAlert" [appearance]="'outline'" [showIcon]="false"
@@ -25,13 +21,13 @@
             <form class="mt-8" [formGroup]="signInForm" #signInNgForm="ngForm">
                 <!-- phone field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Teléfono</mat-label>
-                    <input id="phone" matInput [formControlName]="'phone'">
-                    <mat-error *ngIf="signInForm.get('phone').hasError('required')">
-                        Teléfono es requerído
+                    <mat-label>Usuario</mat-label>
+                    <input id="name" matInput [formControlName]="'name'">
+                    <mat-error *ngIf="signInForm.get('name').hasError('required')">
+                        Usuario es requerído
                     </mat-error>
-                    <mat-error *ngIf="signInForm.get('phone').hasError('phone')">
-                        Escribe un teléfono válido.
+                    <mat-error *ngIf="signInForm.get('name').hasError('name')">
+                        Escribe un Usuario válido.
                     </mat-error>
                 </mat-form-field>
 
@@ -61,12 +57,12 @@
                         [routerLink]="['/forgot-password']">Olvidaste la contraseña?
                     </a> -->
                 </div>
-
+                <!-- 
                 <div class="flex items-baseline mt-0.5 font-medium">
                     <div>Olvidaste tu contraseña?</div>
                     <a class="ml-1 text-primary-500 hover:underline" [routerLink]="['/forgot-password']">Recuperala aquí
                     </a>
-                </div>
+                </div> -->
 
                 <!-- Submit button -->
                 <button class="fuse-mat-button-large w-full mt-6" mat-flat-button [color]="'primary'"
@@ -116,7 +112,7 @@
         </div>
     </div>
     <div
-        class="relative hidden md:flex flex-auto items-center justify-center w-1/2 h-full p-16 lg:px-28 overflow-hidden bg-gray-800 dark:border-l">
+        class="relative hidden md:flex flex-auto items-center justify-center w-1/2 h-full p-16 lg:px-28 overflow-hidden bg-gray-900 dark:border-l">
         <!-- Background - @formatter:off -->
         <!-- Rings -->
         <svg class="absolute inset-0 pointer-events-none" viewBox="0 0 960 540" width="100%" height="100%"
@@ -140,12 +136,21 @@
         <!-- @formatter:on -->
         <!-- Content -->
         <div class="z-10 relative w-full max-w-2xl">
+            <!-- Logo -->
+            <div class="w-50">
+                <img src="https://and.gov.co/wp-content/uploads/2019/09/cropped-logo2-e1570798009578.png" alt="and" />
+            </div>
+
+
             <div class="text-7xl font-bold leading-none text-gray-100">
-                <div>Bienvenido a Verifik</div>
-                <div>Nueva versión de MisDatos.com.co</div>
+                <div>Bienvenido</div>
+
             </div>
             <div class="mt-6 text-lg tracking-tight leading-6 text-gray-400">
-                Estamos migrando poco a poco de MisDatos a Verifik, por lo tanto varios endpoints cambiarán y se mejorará el rendimiento y el servicio de cada uno de ellos.
+                La Agencia Nacional Digital es una entidad de participación pública y naturaleza privada, sin ánimo de
+                lucro adscrita al MINTIC,
+                que busca dinamizar la construcción de un Estado más eficiente, transparente y participativo,
+                gracias al uso y aplicación de la ciencia y las tecnologías de la información.
             </div>
             <div class="flex items-center mt-8">
                 <!-- <div class="flex flex-0 items-center -space-x-1.5">
